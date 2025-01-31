@@ -2,6 +2,9 @@
 ********* LINKEDIN LINK *********
  (www.linkedin.com/in/kholoud-elkasaby-63a58b2a5)
 
+ Library Name : cvp 
+ npm i cvp ..
+
 WHAT you can write for customization by order is 👇🏻
 ////parentID , src , skipTime , iconsColor , width , controlWidth , bgColor , controlBG , dropDownBG
 
