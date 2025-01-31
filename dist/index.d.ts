@@ -14,7 +14,7 @@ declare class VideoPlayer {
     private skipTime;
     private controlColor;
     private prevVolume;
-    constructor(parentId: string, videoSrc: string, skipTime?: number, controlColor?: string);
+    constructor(parentId: string, videoSrc: string, skipTime?: number, controlColor?: string, width?: string, controlWidth?: string, backgroundColor?: string, controlsBackground?: string, dropdownBackground?: string);
     private injectStyles;
     private createIcon;
     private initEvents;

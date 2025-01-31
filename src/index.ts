@@ -18,8 +18,14 @@ class VideoPlayer {
   constructor(
     parentId: string,
     videoSrc: string,
+    //defaults
     skipTime: number = 5,
-    controlColor: string = "#a26f77"
+    controlColor: string = "#a26f77",
+    width: string = "800px",
+    controlWidth: string = "100%",
+    backgroundColor: string = "#222",
+    controlsBackground: string = "#111",
+    dropdownBackground: string = "#000"
   ) {
     this.skipTime = skipTime;
     this.controlColor = controlColor;
@@ -29,6 +35,8 @@ class VideoPlayer {
 
     this.container = document.createElement("div");
     this.container.className = "video-player-container";
+    this.container.style.width = width;
+    this.container.style.background = backgroundColor;
 
     this.video = document.createElement("video");
     this.video.className = "video-element";
@@ -42,6 +50,8 @@ class VideoPlayer {
     // Controls container for all the controls
     this.controls = document.createElement("div");
     this.controls.className = "controls-container";
+    this.controls.style.width = controlWidth;
+    this.controls.style.background = controlsBackground;
 
     this.playBtn = this.createIcon("fa-play", "play");
     this.backwardBtn = this.createIcon("fa-backward", "backwardBtn");
@@ -69,6 +79,7 @@ class VideoPlayer {
     // Speed Selecttionnnn
     this.speedSelect = document.createElement("select");
     this.speedSelect.className = "speed-select";
+    this.speedSelect.style.background = dropdownBackground;
     ["1", "0.5", "1.5", "2"].forEach((speed) => {
       const option = document.createElement("option");
       option.value = speed;
@@ -93,7 +104,13 @@ class VideoPlayer {
     this.initEvents();
 
     // Inject Styles into the head of the html <head>
-    this.injectStyles(parentId);
+    this.injectStyles(
+      parentId,
+      width,
+      backgroundColor,
+      controlsBackground,
+      dropdownBackground
+    );
     this.container.className = `video-player-container-${parentId}`;
     this.video.className = `video-element-${parentId}`;
     this.controls.className = `controls-container-${parentId}`;
@@ -102,7 +119,13 @@ class VideoPlayer {
     this.speedSelect.className = `speed-select-${parentId}`;
   }
 
-  private injectStyles(parentId: string): void {
+  private injectStyles(
+    parentId: string,
+    width: string,
+    backgroundColor: string,
+    controlsBackground: string,
+    dropdownBackground: string
+  ): void {
     this.style.textContent = `
        .fullscreen-mode .controls-container-${parentId} {
         position: absolute;
@@ -129,8 +152,8 @@ class VideoPlayer {
 
 
       .video-player-container-${parentId} {
-        width: 800px;
-        background: #222;
+        width: ${width};
+        background:  ${backgroundColor};
         padding: 10px;
         border-radius: 10px;
         display: flex;
@@ -148,7 +171,7 @@ class VideoPlayer {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(0, 0, 0, 0.8);
+        background: ${controlsBackground};
         padding: 10px;
         border-radius: 5px;
         margin-top: 10px;
@@ -192,7 +215,7 @@ class VideoPlayer {
     cursor: pointer;
   }
       .speed-select-${parentId} {
-        background: black;
+        background:  ${dropdownBackground};
         color: ${this.controlColor};
         padding: 3px;
         border: none;
@@ -317,11 +340,32 @@ class VideoPlayer {
   }
 }
 
-//weeeeeeeeeeee
+////parentID , src , skipTime , iconsColor , width , controlWidth , bgColor , controlBG , dropDownBG
 document.addEventListener("DOMContentLoaded", () => {
   new VideoPlayer("videoContainer", "./vid.mp4", 10, "#a26f77");
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  new VideoPlayer("videoContainer2", "./vid.mp4", 10, "#ff5733");
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   new VideoPlayer(
+//     "videoContainer2",
+//     "./vid.mp4",
+//     10,
+//     "#a26f77",
+//     "500px",
+//     "100%",
+//     "#fff",
+//     "#222",
+//     "#fff"
+//   );
+// });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   new VideoPlayer(
+//     "videoContainer3",
+//     "./vid.mp4",
+//     10,
+//     "#ff5733",
+//     "600px",
+//     "90%"
+//   );
+// });
