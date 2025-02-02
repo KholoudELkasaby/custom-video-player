@@ -29,3 +29,5 @@ declare class VideoPlayer {
     private changeSpeed;
     private toggleFullScreen;
 }
+export default VideoPlayer;
+//# sourceMappingURL=index.d.ts.map

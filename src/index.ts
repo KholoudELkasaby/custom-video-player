@@ -59,13 +59,13 @@ class VideoPlayer {
     this.muteBtn = this.createIcon("fa-volume-high", "muteBtn");
     this.fullScreenBtn = this.createIcon("fa-expand", "fullscreenBtn");
 
-    // Seekin the bar of the video
+    // Seeking the bar of the video
     this.timeRange = document.createElement("input");
     this.timeRange.type = "range";
     this.timeRange.className = "seek-bar";
     this.timeRange.value = "0";
 
-    // Volume customization boi ..
+    // Volume customization.
     this.volumeSlider = document.createElement("input");
     this.volumeSlider.type = "range";
     this.volumeSlider.className = "volume-slider";
@@ -73,10 +73,10 @@ class VideoPlayer {
     this.volumeSlider.max = "1";
     this.volumeSlider.step = "0.1";
     this.volumeSlider.value = "1";
-    // 34an el color yb2a full
+    //for the the full color of the volume range progress
     this.updateVolume();
 
-    // Speed Selecttionnnn
+    //dropdown Speed Selection
     this.speedSelect = document.createElement("select");
     this.speedSelect.className = "speed-select";
     this.speedSelect.style.background = dropdownBackground;
@@ -265,7 +265,7 @@ class VideoPlayer {
       this.volumeSlider.value = String(this.video.volume);
       this.muteBtn.classList.replace("fa-volume-mute", "fa-volume-high");
     } else {
-      // dh 34an yrg3nt ll current when i unmute so it saves the prev number that i was currently on
+      //bring back the current value of the volume when i unmute , saving the prev number obviously
       this.prevVolume = this.video.volume;
       this.video.muted = true;
       this.video.volume = 0;
@@ -278,15 +278,15 @@ class VideoPlayer {
   private adjustVolume(): void {
     const volume = Number(this.volumeSlider.value);
 
-    // lw ana 7rkt f el progress range
+    ////this is when i change in the progress range if it is zero it toggles to the mute icon and the exact opposite
     this.video.muted = volume === 0 ? true : false;
     this.video.volume = volume;
 
-    // 34an lma 23ml mute
+    // mute.
     this.muteBtn.classList.toggle("fa-volume-mute", volume === 0);
     this.muteBtn.classList.toggle("fa-volume-high", volume > 0);
 
-    // 34an el unmute
+    // unmute
     if (volume > 0) this.prevVolume = volume;
 
     this.updateVolume();
@@ -340,32 +340,35 @@ class VideoPlayer {
   }
 }
 
-////parentID , src , skipTime , iconsColor , width , controlWidth , bgColor , controlBG , dropDownBG
+//exporting for module use..
+export default VideoPlayer;
+
+////parentID , src , skipTime , iconsColor , width , controlWidth , bgColor of the whole container , controlBG , dropDownBG
 document.addEventListener("DOMContentLoaded", () => {
   new VideoPlayer("videoContainer", "./vid.mp4", 10, "#a26f77");
 });
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   new VideoPlayer(
-//     "videoContainer2",
-//     "./vid.mp4",
-//     10,
-//     "#a26f77",
-//     "500px",
-//     "100%",
-//     "#fff",
-//     "#222",
-//     "#fff"
-//   );
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  new VideoPlayer(
+    "videoContainer2",
+    "./vid.mp4",
+    10,
+    "#a26f77",
+    "500px",
+    "100%",
+    "#555",
+    "#222",
+    "#fff"
+  );
+});
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   new VideoPlayer(
-//     "videoContainer3",
-//     "./vid.mp4",
-//     10,
-//     "#ff5733",
-//     "600px",
-//     "90%"
-//   );
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  new VideoPlayer(
+    "videoContainer3",
+    "./vid.mp4",
+    10,
+    "#ff5733",
+    "600px",
+    "90%"
+  );
+});
