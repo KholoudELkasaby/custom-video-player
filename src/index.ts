@@ -340,15 +340,10 @@ class VideoPlayer {
   }
 }
 
-//exporting for module use..
-export default VideoPlayer;
-
 ////parentID , src , skipTime , iconsColor , width , controlWidth , bgColor of the whole container , controlBG , dropDownBG
 document.addEventListener("DOMContentLoaded", () => {
   new VideoPlayer("videoContainer", "./vid.mp4", 10, "#a26f77");
-});
-
-document.addEventListener("DOMContentLoaded", () => {
+  //////////////////////
   new VideoPlayer(
     "videoContainer2",
     "./vid.mp4",
@@ -360,9 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "#222",
     "#fff"
   );
-});
-
-document.addEventListener("DOMContentLoaded", () => {
+  ///////////////////////
   new VideoPlayer(
     "videoContainer3",
     "./vid.mp4",
@@ -372,3 +365,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "90%"
   );
 });
+
+//exporting for module usage..
+export default VideoPlayer;
